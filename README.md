@@ -36,13 +36,21 @@ Ansible using vegrant as a docker cluster
     $ ssh-copy-id node1 && ssh-copy-id node2 && ssh-copy-id node3
 
 ### test ansible
+    $ cd /vagrant/ansible
     $ ansible nodes -i myhosts -m command -a hostname
 
 ### install python with plybook on myhosts inventory file
-    $ cd /vagrant/ansible
     $ ansible nodes -i myhosts -m command -a 'sudo apt-get -y install python-simplejson'
 
 ### Run playbook docker-install on myhosts inventory
-    $ ansible-playook -i myhosts -k docker-install.yml
+    $ ansible-playbook -i myhosts -k docker-install.yml
 
     
+
+
+# Containerizing application with Docker 
+### login to node1 to make sure docker is installed properlly
+    $ docker run hello-world
+    < it will pull docker image of 'Hello World>
+* in case you made a mistake in one of the file, re-build the docker image with the following command - 
+    $ docker-compose build
