@@ -1,0 +1,20 @@
+
+# using alpine docker image
+FROM python:3.7-alpine
+# set an working dir
+WORKDIR /code
+# set ENV variable for FLASK
+ENV FLASK_APP=app.py
+ENV FLASK_RUN_HOST=0.0.0.0
+# install software
+RUN apk add --no-cache gcc musl-dev linux-headers
+# copy the req from the source directory projecrt
+COPY requirements.txt requirements.txt
+# install req
+RUN pip install -r requirements.txt
+# set a port for the docker container
+EXPOSE 5000
+#  copy local dirs to WORKDIR
+COPY . .
+#  run commands 
+CMD ["flask", "run"]

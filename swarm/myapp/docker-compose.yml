@@ -1,6 +1,6 @@
 version: "3.3"
 services:
   web:
-    image:  osherlevi7/vagrant-lab:latest .
+    image: .
     ports:
       - "5000:5000"
