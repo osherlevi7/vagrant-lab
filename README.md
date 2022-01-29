@@ -8,7 +8,9 @@ Ansible using vegrant as a docker cluster
 
 ### Download Vagrant - 
 > https://www.vagrantup.com/downloads
-    # vagrant cheatsheet - https://gist.github.com/osherlevi7/9676dee6bc8837b0e2d939a1a0a54bd2
+
+### vagrant cheatsheet - 
+> https://gist.github.com/osherlevi7/9676dee6bc8837b0e2d939a1a0a54bd2
 
 
 # Manaaging the servers using Ansible
@@ -25,8 +27,9 @@ Ansible using vegrant as a docker cluster
     < ping node1, node2, node3 to test the name resolution>
      $ ping node1
 
-### install ansible on the control server
+### install ansible & sshpass on the control server 
     $ sudo apt-get install ansible -y
+    $ sudo apt-get install sshpass
 
 ### make hosts SSH accessible
     $ ssh-keygen
@@ -34,3 +37,12 @@ Ansible using vegrant as a docker cluster
 
 ### test ansible
     $ ansible nodes -i myhosts -m command -a hostname
+
+### install python with plybook on myhosts inventory file
+    $ cd /vagrant/ansible
+    $ ansible nodes -i myhosts -m command -a 'sudo apt-get -y install python-simplejson'
+
+### Run playbook docker-install on myhosts inventory
+    $ ansible-playook -i myhosts -k docker-install.yml
+
+    
